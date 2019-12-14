@@ -1,4 +1,4 @@
-import { EMPLOYEES_LOADED } from './constants';
+import { EMPLOYEES_LOADED, EMPLOYEE_ADD } from './constants';
 
 export const employeesLoaded = (employees) => {
   return {
@@ -7,4 +7,13 @@ export const employeesLoaded = (employees) => {
       employees
     }
   };
+}
+
+export const employeeAdd = (newemployee)=>{
+  return{
+    type: EMPLOYEE_ADD,
+    payload:{
+      newemployee
+    }
+  }
 }
