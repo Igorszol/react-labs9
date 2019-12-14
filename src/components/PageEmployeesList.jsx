@@ -17,8 +17,10 @@ class PageEmployeesList extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ isLoading: true });
-    fetch('http://localhost:3004/employees')
+    if(!this.props.empLoaded)
+    {
+      this.setState({ isLoading: true });
+      fetch('http://localhost:3004/employees')
     .then((data) => data.json())
     // Without Redux
     // .then((employees) => this.setState({ employees, isLoading: false }));
@@ -28,11 +30,12 @@ class PageEmployeesList extends React.Component {
       this.setState({ isLoading: false });
     });
   }
-
+  }
+  
   render() {
     const { isLoading } = this.state;
     const { employees } = this.props;
-
+    
     if(isLoading) {
       return <p>Loading ...</p>
     }
@@ -51,7 +54,8 @@ class PageEmployeesList extends React.Component {
 
 const mapStateToProps = (state /*, ownProps*/) => {
   return {
-    employees: state.employees
+    employees: state.employees,
+    empLoaded: state.empLoaded
   }
 }
 
