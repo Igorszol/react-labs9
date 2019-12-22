@@ -35,7 +35,7 @@ export const employeeAdd = (newemployee)=>{
 
 export const loadEmployees=()=>{
   return(dispatch)=>{
-    dispatch(loadEmployees())
+    dispatch(employeesLoadingEmployees())
     fetch('http://localhost:3004/employees')
     .then((data) => data.json())
     .then(
