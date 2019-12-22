@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 
 
-import { employeesLoaded, loadEmployees } from '../redux/actions'
+import { loadEmployees } from '../redux/actions'
 
 const EmployeeLine = ({ employee }) => <div>{employee.name} ({employee.age} yrs old): {employee.company}</div>
 
@@ -24,7 +24,7 @@ class PageEmployeesList extends React.Component {
   }
   
   render() {
-    const { loading,employees } = this.props;
+    const { loading,employees,user } = this.props;
 
     
     if(loading) {
@@ -33,6 +33,7 @@ class PageEmployeesList extends React.Component {
     
     return (
       <div>
+        <h1 style={{position:"absolute", right:"50px"}}>{user.fullName}</h1>
         <h1>Employees List:</h1>
         {employees && employees.map((employee => <EmployeeLine key={employee.id} employee={employee} />))}
         <Link to="/new">
@@ -47,7 +48,8 @@ const mapStateToProps = (state /*, ownProps*/) => {
   return {
     employees: state.employees,
     empLoaded: state.empLoaded,
-    loading: state.loading
+    loading: state.loading,
+    user:state.user
   }
 }
 

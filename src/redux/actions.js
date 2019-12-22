@@ -1,4 +1,4 @@
-import { EMPLOYEES_LOADED, EMPLOYEE_ADD,EMPLOYEES_LOADING,EMPLOYEES_ERROR } from './constants';
+import { EMPLOYEES_LOADED, EMPLOYEE_ADD,EMPLOYEES_LOADING,EMPLOYEES_ERROR,USER_LOGGING } from './constants';
 
 export const employeesLoaded = (employees) => {
   return {
@@ -32,6 +32,7 @@ export const employeeAdd = (newemployee)=>{
       }
     }
   
+    
 
 export const loadEmployees=()=>{
   return(dispatch)=>{
@@ -43,4 +44,12 @@ export const loadEmployees=()=>{
     (error)=>dispatch(employeesLoadingError(error))
     );
   };
+  }
+
+
+  export const UserLogging=(login)=>{
+    return{
+      type: USER_LOGGING,
+      payload: login
+    }
   }
