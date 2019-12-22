@@ -236,5 +236,11 @@
       "company": "",
       "email": ""
     }
-  ]
+  ],
+  "users":[
+    {
+      "username": "john",
+      "fullName": "John Doe"
+    }
+  ]	  
 }
